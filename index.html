@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="zh-TW">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>莊氏佛堂安座邀請函</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(135deg, #f5f3ef 0%, #e8f5f0 100%);
+      overflow-x: hidden;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-link {
+      color: #8b7355;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #c9a875;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f5f3ef 0%, #e8f5f0 100%);
+    }
+
+    /* Animated Cloud Background */
+    .cloud-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0.6;
+    }
+
+    .cloud {
+      position: absolute;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      filter: blur(40px);
+      animation: float 30s infinite ease-in-out;
+    }
+
+    .cloud1 {
+      width: 300px;
+      height: 150px;
+      top: 10%;
+      left: -10%;
+      animation-delay: 0s;
+    }
+
+    .cloud2 {
+      width: 400px;
+      height: 200px;
+      top: 30%;
+      right: -15%;
+      animation-delay: 5s;
+    }
+
+    .cloud3 {
+      width: 350px;
+      height: 175px;
+      top: 60%;
+      left: -5%;
+      animation-delay: 10s;
+    }
+
+    .cloud4 {
+      width: 250px;
+      height: 125px;
+      top: 80%;
+      right: -10%;
+      animation-delay: 15s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      25% {
+        transform: translate(20vw, -20px) scale(1.1);
+      }
+      50% {
+        transform: translate(40vw, 10px) scale(0.9);
+      }
+      75% {
+        transform: translate(60vw, -10px) scale(1.05);
+      }
+    }
+
+    /* Lotus Background */
+    .lotus-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(201, 168, 117, 0.1) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+
+    .lotus {
+      width: 80px;
+      height: 80px;
+      opacity: 0.3;
+      animation: sway 4s infinite ease-in-out;
+    }
+
+    .lotus:nth-child(2) {
+      animation-delay: 1s;
+    }
+
+    .lotus:nth-child(3) {
+      animation-delay: 2s;
+    }
+
+    @keyframes sway {
+      0%, 100% {
+        transform: rotate(-5deg) translateY(0);
+      }
+      50% {
+        transform: rotate(5deg) translateY(-10px);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 2rem;
+      max-width: 800px;
+    }
+
+    .hero-title {
+      font-family: "Noto Serif TC", serif;
+      font-size: 3.5rem;
+      color: #8b7355;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.3rem;
+      text-shadow: 0 2px 10px rgba(139, 115, 85, 0.1);
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: #6b9080;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c9a875 0%, #d4b896 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(201, 168, 117, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 168, 117, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #8b7355;
+      border: 2px solid #c9a875;
+    }
+
+    .btn-secondary:hover {
+      background: #f9f7f4;
+      transform: translateY(-2px);
+    }
+
+    /* Section Container */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: "Noto Serif TC", serif;
+      font-size: 2.5rem;
+      color: #8b7355;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 600;
+      letter-spacing: 0.2rem;
+    }
+
+    /* Invitation Card */
+    .invitation-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+	.invitation-text {
+		text-align: center;
+	}
+	
+	.invitation-notice {
+		text-align: left;
+	}
+	
+	.invitation-notice ul {
+		margin: 0;
+		adding-left: 1.2rem;  /* 讓項目符號不要貼邊 */
+	}
+
+    .invitation-unit {
+      font-size: 1.2rem;
+      color: #6b9080;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .invitation-text {
+      font-size: 1.1rem;
+      color: #5a5a5a;
+      line-height: 2;
+      margin-bottom: 2rem;
+      text-align: justify;
+    }
+
+    .notice-box {
+      background: rgba(201, 168, 117, 0.1);
+      border-left: 4px solid #c9a875;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .notice-title {
+      font-weight: 600;
+      color: #8b7355;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .notice-content {
+      color: #5a5a5a;
+      line-height: 1.8;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .timeline-time {
+      flex-shrink: 0;
+      width: 120px;
+      text-align: right;
+      padding-top: 0.5rem;
+    }
+
+    .time-text {
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.3rem;
+      color: #c9a875;
+      font-weight: 600;
+    }
+
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #c9a875 0%, #d4b896 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(201, 168, 117, 0.2);
+      position: relative;
+    }
+
+    .timeline-item:not(:last-child) .timeline-dot::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(201, 168, 117, 0.5), transparent);
+    }
+
+    .timeline-content {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .timeline-title {
+      font-size: 1.2rem;
+      color: #8b7355;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      color: #5a5a5a;
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      color: #8b7355;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-content {
+      color: #5a5a5a;
+      line-height: 1.8;
+    }
+
+    .info-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: #8b7355;
+      min-width: 80px;
+    }
+
+    .qr-section {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .qr-placeholder {
+      width: 200px;
+      height: 200px;
+      margin: 1.5rem auto;
+      background: white;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed #c9a875;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .qr-text {
+      color: #8b7355;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(139, 115, 85, 0.05);
+      padding: 2rem;
+      text-align: center;
+      color: #8b7355;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-bar {
+        padding: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-link {
+        font-size: 0.85rem;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+        letter-spacing: 0.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .section {
+        padding: 3rem 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .invitation-card {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+      }
+
+      .timeline-item {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .timeline-time {
+        width: auto;
+        text-align: left;
+      }
+
+      .timeline-item:not(:last-child) .timeline-dot::after {
+        height: 40px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="main-wrapper"><!-- Navigation -->
+   <nav class="nav-bar"><a href="#hero" class="nav-link">首頁</a> <a href="#invitation" class="nav-link">邀請函</a> <a href="#schedule" class="nav-link">佛堂安座流程</a> <a href="#contact" class="nav-link">聯絡報名</a>
+   </nav><!-- Hero Section -->
+   <section id="hero" class="hero-section">
+    <div class="cloud-container">
+     <div class="cloud cloud1"></div>
+     <div class="cloud cloud2"></div>
+     <div class="cloud cloud3"></div>
+     <div class="cloud cloud4"></div>
+    </div>
+    <div class="lotus-bg">
+     <svg class="lotus" viewbox="0 0 100 100" fill="#c9a875"><path d="M50 90 C30 90 20 70 20 50 C20 40 25 30 35 25 C30 35 30 45 35 55 C40 30 45 20 50 10 C55 20 60 30 65 55 C70 45 70 35 65 25 C75 30 80 40 80 50 C80 70 70 90 50 90Z" />
+     </svg>
+     <svg class="lotus" viewbox="0 0 100 100" fill="#c9a875"><path d="M50 90 C30 90 20 70 20 50 C20 40 25 30 35 25 C30 35 30 45 35 55 C40 30 45 20 50 10 C55 20 60 30 65 55 C70 45 70 35 65 25 C75 30 80 40 80 50 C80 70 70 90 50 90Z" />
+     </svg>
+     <svg class="lotus" viewbox="0 0 100 100" fill="#c9a875"><path d="M50 90 C30 90 20 70 20 50 C20 40 25 30 35 25 C30 35 30 45 35 55 C40 30 45 20 50 10 C55 20 60 30 65 55 C70 45 70 35 65 25 C75 30 80 40 80 50 C80 70 70 90 50 90Z" />
+     </svg>
+    </div>
+    <div class="hero-content">
+     <h1 class="hero-title" id="hero-title">莊氏佛堂安座典禮</h1>
+     <p class="hero-subtitle" id="hero-subtitle">誠摯邀請您蒞臨，一起點亮心燈、開啟智慧</p>
+     <div class="hero-buttons"><a href="#schedule" class="btn btn-primary">查看流程</a> <a href="#contact" class="btn btn-secondary">立即報名</a>
+     </div>
+    </div>
+   </section><!-- Invitation Section -->
+   <section id="invitation" class="section">
+    <h2 class="section-title">邀請函</h2>
+    <div class="invitation-card">
+	 <div class="top-content">
+		<div class="invitation-unit" id="invitation-unit">
+		  發一崇德桃園道場 桃三區 實德責任壇 莊氏佛堂壇主 敬邀
+		 </div>
+		 <div class="invitation-text" id="invitation-text">
+		  天恩浩蕩  師德無邊  蒙沾天恩師德 上天慈悲 <br>
+		  彌勒祖師鴻慈 師尊師母聖德普照 <br>
+		  白水聖帝  不休息菩薩  護佑領導 <br>
+		  點傳師 及各位前賢們成全照顧<br><br>
+		 </div>
+	 </div>
+     <div class="invitation-notice">
+		<div class="notice-box">
+		  <div class="notice-title">
+		   📋 注意事項
+		  </div>
+		  <div class="notice-content" id="notice-content">
+			• 敬請提前報名，以便安排座位與餐點<br>
+			• 現場備有停車位，請依工作人員指引停放
+		  </div>
+		 </div>
+	 </div>
+    </div>
+   </section><!-- Schedule Section -->
+   <section id="schedule" class="section" style="background: rgba(201, 168, 117, 0.03);">
+    <h2 class="section-title">佛堂安座流程</h2>
+    <div class="timeline">
+     <div class="timeline-item">
+      <div class="timeline-time">
+       <div class="time-text">
+        08:30
+       </div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+       <div class="timeline-title">
+        迎賓
+       </div>
+       <div class="timeline-desc">
+        貴賓簽到，引導入座
+       </div>
+      </div>
+     </div>
+     <div class="timeline-item">
+      <div class="timeline-time">
+       <div class="time-text">
+        09:00
+       </div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+       <div class="timeline-title">
+        安座設壇
+       </div>
+       <div class="timeline-desc">
+        獻供、安座、謝恩
+       </div>
+      </div>
+     </div>
+     <div class="timeline-item">
+      <div class="timeline-time">
+       <div class="time-text">
+        10:20
+       </div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+       <div class="timeline-title">
+        團體合照
+       </div>
+       <div class="timeline-desc">
+        恭請點傳師、各位講師及各位前賢一同合影留念
+       </div>
+      </div>
+     </div>
+     <div class="timeline-item">
+      <div class="timeline-time">
+       <div class="time-text">
+        10:30
+       </div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+       <div class="timeline-title">
+        點心燈開智慧
+       </div>
+       <div class="timeline-desc">
+        點亮我們的智慧心燈、求一條康莊大道、求一條平安健康的路
+       </div>
+      </div>
+     </div>
+     <div class="timeline-item">
+      <div class="timeline-time">
+       <div class="time-text">
+        12:00
+       </div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+       <div class="timeline-title">
+        平安齋
+       </div>
+       <div class="timeline-desc">
+        享用美味的素食佳餚，交流聯誼
+       </div>
+      </div>
+     </div>
+	 <div class="timeline-item">
+      <div class="timeline-time">
+       <div class="time-text">
+        13:00
+       </div>
+      </div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+       <div class="timeline-title">
+        皆大歡喜
+       </div>
+       <div class="timeline-desc">
+        同沾天恩師德與佛光之普照
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact & Registration Section -->
+   <section id="contact" class="section">
+    <h2 class="section-title">地點與聯絡資訊</h2>
+    <div class="contact-grid">
+     <div class="contact-card">
+      <div class="card-title">
+       📍 活動地點
+      </div>
+      <div class="card-content">
+       <div id="location-address" style="margin-bottom: 1rem;">
+        桃園市楊梅區雅典一路90巷23號
+       </div><a href="https://maps.app.goo.gl/p8wZ4tyXwyPWFafs5?g_st=ipc" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.9rem;"> Google 地圖導航 </a>
+      </div>
+     </div>
+     <div class="contact-card">
+      <div class="card-title">
+       📞 聯絡方式
+      </div>
+      <div class="card-content">
+       <div class="info-row"><span class="info-label">聯絡人：</span> <span id="contact-person">莊勝傑</span>
+       </div>
+       <div class="info-row"><span class="info-label">電話：</span> <span id="contact-phone">0975-330-555</span>
+       </div>
+       <div class="info-row"><span class="info-label">聯絡人：</span> <span id="contact-person">吳沛婕</span>
+       </div>
+       <div class="info-row"><span class="info-label">電話：</span> <span id="contact-phone">0987-758-606</span>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="qr-section">
+     <h3 class="card-title" style="justify-content: center;">✨ 立即報名</h3><a href="https://forms.gle/NVHB37mQSMjFcdvX7" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-block; margin-bottom: 2rem;"> 前往 Google 表單報名 </a>
+     <div class="qr-placeholder">
+      <svg width="180" height="180" viewbox="0 0 180 180" fill="none"><rect x="10" y="10" width="50" height="50" fill="#8b7355" /> <rect x="120" y="10" width="50" height="50" fill="#8b7355" /> <rect x="10" y="120" width="50" height="50" fill="#8b7355" /> <rect x="25" y="25" width="20" height="20" fill="white" /> <rect x="135" y="25" width="20" height="20" fill="white" /> <rect x="25" y="135" width="20" height="20" fill="white" /> <g opacity="0.8">
+        <rect x="70" y="20" width="10" height="10" fill="#8b7355" />
+        <rect x="90" y="20" width="10" height="10" fill="#8b7355" />
+        <rect x="70" y="40" width="10" height="10" fill="#8b7355" />
+        <rect x="80" y="50" width="10" height="10" fill="#8b7355" />
+        <rect x="100" y="40" width="10" height="10" fill="#8b7355" />
+        <rect x="120" y="70" width="10" height="10" fill="#8b7355" />
+        <rect x="140" y="70" width="10" height="10" fill="#8b7355" />
+        <rect x="160" y="70" width="10" height="10" fill="#8b7355" />
+        <rect x="130" y="90" width="10" height="10" fill="#8b7355" />
+        <rect x="150" y="100" width="10" height="10" fill="#8b7355" />
+        <rect x="70" y="120" width="10" height="10" fill="#8b7355" />
+        <rect x="90" y="130" width="10" height="10" fill="#8b7355" />
+        <rect x="80" y="150" width="10" height="10" fill="#8b7355" />
+        <rect x="100" y="160" width="10" height="10" fill="#8b7355" />
+       </g>
+      </svg>
+     </div>
+     <p class="qr-text">掃描 QR Code 加速報名!!<br>
+      （請將您的報名表單 QR Code 放置於此）</p>
+    </div>
+   </section><!-- Footer -->
+   <footer class="footer">
+    <p>🙏 感謝天恩師德 🙏</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">願以此功德，祈求各位講師前賢平安喜樂 聖凡如意</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_image_url: "",
+      hero_title: "莊氏佛堂安座大典",
+      hero_subtitle: "誠摯邀請您蒞臨，一起點亮心燈、開啟智慧",
+      invitation_unit: "發一崇德桃園道場 桃三區 實德責任壇 莊氏佛堂壇主 敬邀",
+      invitation_text: "天恩浩蕩  師德無邊  蒙沾天恩師德 上天慈悲\n彌勒祖師鴻慈 師尊師母聖德普照\n白水聖帝  不休息菩薩  護佑領導\n點傳師 及各位前賢們成全照顧\n\n莊氏佛堂僅訂於115年1月3日(六)\n農曆冬月十五日\n上午九點舉辦安座設壇暨點心燈開智慧活動\n誠摯邀請 各位點傳師及各位講師前賢蒞臨 ",
+      notice_text: "• 敬請提前報名，以便安排座位與餐點\n• 現場備有停車位，請依工作人員指引停放",
+      location_address: "桃園市楊梅區雅典一路90巷23號",
+      contact_person: "莊勝傑/吳沛婕",
+      contact_phone: "0975-330-555/0987-758-606",
+      contact_email: "contact@example.com",
+      background_color: "#f5f3ef",
+      surface_color: "#ffffff",
+      text_color: "#5a5a5a",
+      primary_action_color: "#c9a875",
+      secondary_action_color: "#6b9080"
+    };
+
+    async function onConfigChange(config) {
+      const heroTitle = document.getElementById('hero-title');
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      const invitationUnit = document.getElementById('invitation-unit');
+      const invitationText = document.getElementById('invitation-text');
+      const noticeContent = document.getElementById('notice-content');
+      const locationAddress = document.getElementById('location-address');
+      const contactPerson = document.getElementById('contact-person');
+      const contactPhone = document.getElementById('contact-phone');
+      const contactEmail = document.getElementById('contact-email');
+
+      <!-- Update background image -->
+      const heroSection = document.querySelector('.hero-section');
+      const backgroundImageUrl = config.background_image_url || defaultConfig.background_image_url;
+      if (heroSection) {
+        if (backgroundImageUrl && backgroundImageUrl.trim() !== '') {
+          heroSection.style.backgroundImage = `url('${backgroundImageUrl}')`;
+        } else {
+          heroSection.style.backgroundImage = 'none';
+        }
+      }
+
+      if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+      if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      if (invitationUnit) invitationUnit.textContent = config.invitation_unit || defaultConfig.invitation_unit;
+      
+      if (invitationText) {
+        const text = config.invitation_text || defaultConfig.invitation_text;
+        invitationText.innerHTML = text.replace(/\n/g, '<br>');
+      }
+      
+      if (noticeContent) {
+        const text = config.notice_text || defaultConfig.notice_text;
+        noticeContent.innerHTML = text.replace(/\n/g, '<br>');
+      }
+      
+      if (locationAddress) locationAddress.textContent = config.location_address || defaultConfig.location_address;
+      if (contactPerson) contactPerson.textContent = config.contact_person || defaultConfig.contact_person;
+      if (contactPhone) contactPhone.textContent = config.contact_phone || defaultConfig.contact_phone;
+      if (contactEmail) contactEmail.textContent = config.contact_email || defaultConfig.contact_email;
+
+      // Apply colors
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #e8f5f0 100%)`;
+      
+      if (heroSection) {
+        heroSection.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #e8f5f0 100%)`;
+      }
+
+      const cards = document.querySelectorAll('.invitation-card, .contact-card, .qr-section, .timeline-content');
+      cards.forEach(card => {
+        card.style.background = `${surfaceColor}e6`;
+      });
+
+      const textElements = document.querySelectorAll('.invitation-text, .timeline-desc, .card-content, .notice-content, .qr-text');
+      textElements.forEach(el => {
+        el.style.color = textColor;
+      });
+
+      const primaryButtons = document.querySelectorAll('.btn-primary');
+      primaryButtons.forEach(btn => {
+        btn.style.background = `linear-gradient(135deg, ${primaryActionColor} 0%, #d4b896 100%)`;
+      });
+
+      const heroSubtitleEl = document.querySelector('.hero-subtitle');
+      if (heroSubtitleEl) {
+        heroSubtitleEl.style.color = secondaryActionColor;
+      }
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              config.secondary_action_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["background_image_url", config.background_image_url || defaultConfig.background_image_url],
+        ["hero_title", config.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["invitation_unit", config.invitation_unit || defaultConfig.invitation_unit],
+        ["invitation_text", config.invitation_text || defaultConfig.invitation_text],
+        ["notice_text", config.notice_text || defaultConfig.notice_text],
+        ["location_address", config.location_address || defaultConfig.location_address],
+        ["contact_person", config.contact_person || defaultConfig.contact_person],
+        ["contact_phone", config.contact_phone || defaultConfig.contact_phone],
+        ["contact_email", config.contact_email || defaultConfig.contact_email]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aebee0c4337a36d',t:'MTc2NTg2NDUwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
